@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburgerező | Rendelés</title>
+    <link rel="stylesheet" href="/lib/bootstrap-5.2.0-beta1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/75ba452af7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <i class="fa-solid fa-burger"></i>
+        <span>Hamburgerező</span>
+        <i class="fa-solid fa-burger"></i>
+    </header>
+    
+    <nav>
+        <a href="./"> Főoldal</a>
+        <a href="./etlap.html"> Étlap</a>
+        <a href="./rendeles.html"> Rendelés</a>
+        <a href="./about.html"> Rólunk</a>
+    </nav>
+
+    <h1>Rendelés</h1>
+    <div class="content">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <form>
+                    <fieldset>
+                        <legend>Személyes adatok</legend>
+                        <div class="form-group">
+                            <label for="name">Név</label>
+                            <input type="text" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email">
+                            <div id="emailError" style="color:red; visibility: hidden;">Hibás Email cím</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Cím</label>
+                            <input type="text" name="address">
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Feltétek</legend>
+                        <div class="form-group">
+                            <label for="sajt">Sajt: 300Ft</label>
+                            <input type="checkbox" name="sajt" value="300" id="sajt">
+                        </div>
+                        <div class="form-group">
+                            <label for="bacon">Bacon 400Ft</label>
+                            <input type="checkbox" name="bacon">
+                        </div>
+                        <div class="form-group">
+                            <label for="double-meal">Dupla hús: 1000Ft</label>
+                            <input type="checkbox" name="double-meal">
+                        </div>
+                        <div class="form-group">
+                            <label for="sajt&bacon">Sajt és Bacon: 700Ft</label>
+                            <input type="checkbox" name="sajt&bacon">
+                        </div>
+                        <div class="form-group">
+                            <label for="sajt&double-meal">Sajt és dupla hús: 1300Ft</label>
+                            <input type="checkbox" name="sajt&double-meal">
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Szószok</legend>
+                        <div class="form-group">
+                            <select id="souces" name="souce" title="Szószok">
+                                <option value="0">Hagyományos (benne van az árban)</option>
+                                <option value="100">Csípős: 100Ft</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        Fizetendő: <span id="show-amount"></span>Ft
+                      </div>
+                    <button onclick="datas()" type="button" class="btn btn-primary">Rendelés</button>
+                  </form>
+
+
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+    <script src="/javascript/script.js"></script>
+</body>
+
+</html>

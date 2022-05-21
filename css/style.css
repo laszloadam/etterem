@@ -1,3 +1,67 @@
+* {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body {
+    margin:0;
+}
 header {
+    font-size: 32px;
+    font-weight: 700;
     background-color: rgb(106, 211, 0);
+    padding: 30px;
+    text-align: center;
+}
+nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    border-top: 3px solid rgb(82, 43, 0);
+    border-bottom: 3px solid rgb(82, 43, 0);
+    padding: 20px;
+    background-color: orange;
+
+}
+nav a {
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    text-shadow: 0 0 5px black;
+}
+h1 {
+    text-align: center;
+}
+.content {
+    margin:30px;
+}
+
+/* Étlap */
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    background: orange;
+}
+.box {
+    overflow: hidden;
+    border:1px solid black;
+    height:300px;
+    width:200px;
+    margin:20px;
+    box-shadow: 3px 3px 7px black;
+}
+.box img {
+    height: 160px;
+}
+.box .box-description {
+    padding:10px;
+}
+
+
+/* Rendelés */
+
+.form-group {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
 }
