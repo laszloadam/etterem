@@ -15,6 +15,18 @@
         <a href="./etlap.html"> Étlap</a>
         <a href="./rendeles.html"> Rendelés</a>
         <a href="./about.html"> Rólunk</a>
+        <div class="selectDay" style="float:right; display:flex; flex-direction:column;justify-content:right">
+            <select title="napok" name="temp" id="temp" onchange="getDay()" >
+                <option value="0">Hétfő</option>
+                <option value="1">Kedd</option>
+                <option value="2">Szerda</option>
+                <option value="3">Csütörtök</option>
+                <option value="4">Péntek</option>
+                <option value="5">Szombat</option>
+                <option value="6">Vasárnap</option>
+            </select>
+            <div id="temperatureBox"></div>
+        </div>
     </nav>
     <h1>Nyitvatartás</h1>
     <table>
@@ -47,5 +59,7 @@
             <td>Zárva</td>
         </tr>
     </table>
+    <script src="/javascript/script.js"></script>
+
 </body>
 </html>
