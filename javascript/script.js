@@ -56,3 +56,67 @@ function getDay() {
     });
 }
 getDay()
+
+
+//táblázat
+
+let users = [
+    {
+        "_id": 1,
+        "name": 'Linda Halász',
+        "email": 'linda.halasz@hotmail.com',
+        "address": '8096 Budapest, Hajdu dűlőút 94'
+    },
+    {
+        "_id": 2,
+        "name": 'Mihály Szabó',
+        "email": 'misike32z@gmail.com',
+        "address": '3153 Székesfehérvár, Klaudia utca 10.'
+    },
+    {
+        "_id": 3,
+        "name": 'Hunor Pataki',
+        "email": 'misike32z@ingyenmail.hu',
+        "address": '7787 Budapest, Balázs rakpart 400.'
+    },
+    {
+        "_id": 4,
+        "name": 'Szonja Németh',
+        "email": 'sz.nemeth@gmail.com',
+        "address": '8822 Békéscsaba, Richárd orom 78.'
+    },
+    {
+        "_id": 5,
+        "name": 'Vilmos Dudás',
+        "email": 'vil.das@hgmail.hu',
+        "address": '1300 Salgótarján, Alexa útja 58.'
+    },
+    
+];
+
+let tbody = document.querySelector('#tbody');
+
+for(let user of users) {
+    tbody.innerHTML +=
+    `
+    <tr>
+        <td>
+            ${user._id}
+        </td>
+        <td>
+            ${user.email}
+        </td>
+        <td>
+            ${user.name}
+        </td>
+        <td>
+            ${user.address}
+        </td>
+        <td class="d-flex justify-content-end">
+                <button class="btn btn-info">Edit</button>
+                <button class="btn btn-danger">Delet</button>
+        </td>
+
+    </tr>
+    `
+}
