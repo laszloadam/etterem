@@ -43,25 +43,22 @@
             <div class="col-4"></div>
             <div class="col-4">
                 <form>
-                    <fieldset>
-                        <legend>Személyes adatok</legend>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border">Személyes adatok</legend>
                         <div class="form-group">
-                            <label for="name">Név</label>
-                            <input type="text" name="name">
+                            <input class="form-control" type="text" name="name" placeholder="Név">
                         </div>
                         <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" name="email">
+                            <input class="form-control" type="email" name="email" placeholder="Email">
                             <div id="emailError" style="color:red; visibility: hidden;">Hibás Email cím</div>
                         </div>
                         <div class="form-group">
-                            <label for="address">Cím</label>
-                            <input type="text" name="address">
+                            <input class="form-control" type="text" name="address" placeholder="Cím">
                         </div>
                     </fieldset>
 
-                    <fieldset>
-                        <legend>Feltétek</legend>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border">Feltétek</legend>
                         <div class="form-group">
                             <label for="sajt">Sajt: 300Ft</label>
                             <input type="checkbox" name="sajt" value="300" id="sajt">
@@ -84,8 +81,8 @@
                         </div>
                     </fieldset>
 
-                    <fieldset>
-                        <legend>Szószok</legend>
+                    <fieldset class="scheduler-border">
+                        <legend class="scheduler-border">Szószok</legend>
                         <div class="form-group">
                             <select id="souces" name="souce" title="Szószok">
                                 <option value="0">Hagyományos (benne van az árban)</option>
