@@ -65,3 +65,19 @@ section {
     display: flex;
     justify-content: space-between;
 }
+
+
+
+/* admin panel */
+
+table {
+    counter-reset: rowNumber;
+  }
+  
+  tr td:first-child::after {
+    display: table-cell;
+    counter-increment: rowNumber;
+    content: counter(rowNumber) ".";
+    padding-right: 0.3em;
+    text-align: right;
+  }
