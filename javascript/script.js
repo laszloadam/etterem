@@ -39,10 +39,11 @@ let offers = ["forró csoki", "meleg tea", "finom süti", "fagyi", "jéghideg li
 
 
 let nowDay = new Date().getDay()-1;
+console.log(days[nowDay]);
 actualOffer='Nincs ajánlat';
 function getDay() {
-    nowDay = document.getElementById('temp').value;
     document.querySelector(`#temp option[value="${nowDay}"]`).setAttribute('selected', '')
+    nowDay = document.getElementById('temp').value;
     fetch('https://api.openweathermap.org/data/2.5/forecast?lat=46.253010&lon=20.141425&units=metric&&exclude=daily&cnt=7&appid=4aa5aa9a37ad4a4ce47b753c2c688389')
     .then(response => response.json())
     .then(data => {
