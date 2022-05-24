@@ -44,13 +44,13 @@ for(let user of users) {
         <td>
         
         </td>
-        <td>
+        <td class="nameCell">
             ${user.name}
         </td>
-        <td>
+        <td class="emailCell">
             ${user.email}
         </td>
-        <td>
+        <td class="addressCell">
             ${user.address}
         </td>
         <td class="text-center" style="">
@@ -72,26 +72,40 @@ function modifyUser(id) {
         <fieldset class="scheduler-border">
         <legend class="scheduler-border">Felhasználó adatainak módosítása</legend>
             <div class="form-group">
-                <input class="form-control" type="text" id="name" placeholder="Név" value="${users[id].name}">
+                <input class="form-control" type="text" name="name" placeholder="Név" value="${users[id].name}">
             </div>
             <div class="form-group">
-                <input class="form-control" type="email" id="name" placeholder="Email" value="${users[id].email}">
+                <input class="form-control" type="email" name="email" placeholder="Email" value="${users[id].email}">
             </div>
             <div class="form-group">
-                <input class="form-control" type="text" id="name" placeholder="Cím" value="${users[id].address}">
+                <input class="form-control" type="text" name="address" placeholder="Cím" value="${users[id].address}">
             </div>
             <div class="text-center">
-                <button type="button" class="btn btn-primary">Mentés</button>
+                <button type="submit" class="btn btn-primary">Mentés</button>
                 <button type="button" class="btn btn-primary" onclick="closeForm()">Mégsem</button>
             </div>
         </fieldset>
     </form>
     `
     document.querySelector('body').appendChild(form);
+    form.addEventListener('submit', function(ev) {
+        ev.preventDefault();
+        let inputs = this.querySelectorAll('input')
+        let values = {};
+        for(let i = 0; i< inputs.length; i++) {
+            values[inputs[i].name] = inputs[i].value;
+        }
+        users[id]=values
+        document.querySelector('.nameCell').textContent = `${values.name}`;
+        document.querySelector('.emailCell').textContent = `${values.email}`;
+        document.querySelector('.addressCell').textContent = `${values.address}`;
+        document.querySelector('#editForm').remove()
+    })
 }
 
+
 function closeForm() {
-    document.querySelector(`#editForm`).remove()
+    document.querySelector('#editForm').remove()
 }
 
 function deleteUser(id) {
