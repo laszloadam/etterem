@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "Halász Linda",
+      "email": "linda.halasz@hotmail.com",
+      "address": "8096 Budapest, Hajdu dűlőút 94"
+    },
+    {
+      "id": 1,
+      "name": "Szabó Mihály",
+      "email": "misike32@gmail.com",
+      "address": "3153 Székesfehérvár, Klaudia utca 10."
+    },
+    {
+      "id": 2,
+      "name": "Pataki Hunor",
+      "email": "taki@ingyenmail.hu",
+      "address": "7787 Budapest, Balázs rakpart 400."
+    },
+    {
+      "id": 3,
+      "name": "Németh Szonja",
+      "email": "sz.nemeth@gmail.com",
+      "address": "8822 Békéscsaba, Richárd orom 78."
+    },
+    {
+      "id": 4,
+      "name": "Dudás Vilmos",
+      "email": "vil.das@hgmail.hu",
+      "address": "1300 Salgótarján, Alexa útja 58."
+    }
+  ],
+  "menu": [
+    {
+      "id": 0,
+      "name": "Óriás hamburger",
+      "price": "500Ft",
+      "img": "pics/giantburger.jpg"
+    },
+    {
+      "id": 1,
+      "name": "Csirkés hamburger",
+      "price": "500Ft",
+      "img": "pics/chickenburger.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Sima hamburger",
+      "price": "500Ft",
+      "img": "pics/Normalburger.jpg"
+    }
+  ]
+}

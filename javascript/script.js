@@ -39,7 +39,6 @@ let offers = ["forró csoki", "meleg tea", "finom süti", "fagyi", "jéghideg li
 
 
 let nowDay = new Date().getDay()-1;
-console.log(days[nowDay]);
 actualOffer='Nincs ajánlat';
 function getDay() {
     document.querySelector(`#temp option[value="${nowDay}"]`).setAttribute('selected', '')

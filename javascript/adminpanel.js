@@ -1,86 +1,69 @@
 //táblázat
 
-let users = [
-    {
-        "_id": 0,
-        "name": 'Halász Linda',
-        "email": 'linda.halasz@hotmail.com',
-        "address": '8096 Budapest, Hajdu dűlőút 94'
-    },
-    {
-        "_id": 1,
-        "name": 'Szabó Mihály',
-        "email": 'misike32@gmail.com',
-        "address": '3153 Székesfehérvár, Klaudia utca 10.'
-    },
-    {
-        "_id": 2,
-        "name": 'Pataki Hunor',
-        "email": 'taki@ingyenmail.hu',
-        "address": '7787 Budapest, Balázs rakpart 400.'
-    },
-    {
-        "_id": 3,
-        "name": 'Németh Szonja',
-        "email": 'sz.nemeth@gmail.com',
-        "address": '8822 Békéscsaba, Richárd orom 78.'
-    },
-    {
-        "_id": 4,
-        "name": 'Dudás Vilmos',
-        "email": 'vil.das@hgmail.hu',
-        "address": '1300 Salgótarján, Alexa útja 58.'
-    },
-    
-];
-
 let tbody = document.querySelector('#tbody');
+
+
+function getServerData(url) {
+    let fetchOptions = {
+        method: "GET",
+        mode: "cors",
+        cache: "no-cache" 
+      }; 
+      return fetch(url, fetchOptions).then(
+        response => response.json(),
+        err => console.log(err))
+}
+
 function getDatas() {
-    for(let user of users) {
+    getServerData('http://localhost:3000/users').then(data => {
+        for(let user of data) {
 
-        tbody.innerHTML +=
-        `
-        <tr id="${user._id}">
-            <td>
+            tbody.innerHTML +=
+            `
+            <tr id="${user.id}">
+                <td>
+                
+                </td>
+                <td class="nameCell">
+                    ${user.name}
+                </td>
+                <td class="emailCell">
+                    ${user.email}
+                </td>
+                <td class="addressCell">
+                    ${user.address}
+                </td>
+                <td class="text-center" style="">
+                        <button class="btn btn-info" onclick="modifyUser('${user.id}')">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteUser('${user.id}')">Delet</button>
+                </td>
+    
+            </tr>
+            `;
             
-            </td>
-            <td class="nameCell">
-                ${user.name}
-            </td>
-            <td class="emailCell">
-                ${user.email}
-            </td>
-            <td class="addressCell">
-                ${user.address}
-            </td>
-            <td class="text-center" style="">
-                    <button class="btn btn-info" onclick="modifyUser('${user._id}')">Edit</button>
-                    <button class="btn btn-danger" onclick="deleteUser('${user._id}')">Delet</button>
-            </td>
-
-        </tr>
-        `;
-        
-    }
+        }
+    });
+    
 }
 getDatas()
 
 function modifyUser(id) {
     let form = document.createElement('div')
     form.setAttribute("id", 'editForm')
+    getServerData('http://localhost:3000/users').then(data => {
     form.innerHTML = `
 
     <form id="form">
         <fieldset class="scheduler-border">
         <legend class="scheduler-border">Felhasználó adatainak módosítása</legend>
             <div class="form-group">
-                <input class="form-control" type="text" name="name" placeholder="Név" value="${users[id].name}">
+                <input class="form-control" type="text" name="name" placeholder="Név" value="${data[id].name}">
             </div>
             <div class="form-group">
-                <input class="form-control" type="email" name="email" placeholder="Email" value="${users[id].email}">
+                <input class="form-control" type="email" name="email" placeholder="Email" value="${data[id].email}">
             </div>
             <div class="form-group">
-                <input class="form-control" type="text" name="address" placeholder="Cím" value="${users[id].address}">
+                <input class="form-control" type="text" name="address" placeholder="Cím" value="${data[id].address}">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Mentés</button>
@@ -88,7 +71,7 @@ function modifyUser(id) {
             </div>
         </fieldset>
     </form>
-    `
+    `})
     document.querySelector('body').appendChild(form);
     form.addEventListener('submit', function(ev) {
         ev.preventDefault();
@@ -97,10 +80,22 @@ function modifyUser(id) {
         for(let i = 0; i< inputs.length; i++) {
             values[inputs[i].name] = inputs[i].value;
         }
-        users[id]=values
-        document.querySelector(`tr[id='${id}'] .nameCell`).textContent = `${values.name}`;
-        document.querySelector(`tr[id='${id}'] .emailCell`).textContent = `${values.email}`;
-        document.querySelector(`tr[id='${id}'] .addressCell`).textContent = `${values.address}`;
+        let fetchOptions = {
+            method: "PUT",
+            mode: "cors",
+            cache: "no-cache",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(values) 
+          }; 
+        fetch(`http://localhost:3000/users/${id}`, fetchOptions).then(
+            response => response.json(),
+            err => console.log(err))
+            .then(data => {
+                tbody.innerHTML='';
+                getDatas()
+            });
         document.querySelector('#editForm').remove()
     })
 }
@@ -108,8 +103,20 @@ function modifyUser(id) {
 
 
 function deleteUser(id) {
-    if(confirm(`Valóban törölni akarja ${users[id].name} adatait?`)) {
-        document.querySelector(`tr[id='${id}']`).remove()
+    if(confirm(`Valóban törölni akarja felhasználó adatait?`)) {
+        let fetchOptions = {
+            method: "DELETE",
+            mode: "cors",
+            cache: "no-cache" 
+          }; 
+        fetch(`http://localhost:3000/users/${id}`, fetchOptions).then(
+            response => response.json(),
+            err => console.log(err))
+            .then(data => {
+                console.log(data);
+                tbody.innerHTML='';
+                getDatas()
+            });
     }
 }
 
@@ -148,12 +155,24 @@ function newUser() {
         let inputs = this.querySelectorAll('input')
         let values = {};
         for(let i = 0; i< inputs.length; i++) {
-            values._id = users.length
             values[inputs[i].name] = inputs[i].value;
         }
-        users.push(values);
-        tbody.innerHTML='';
-        getDatas()
-        document.querySelector('#editForm').remove()
-    })
+        let fetchOptions = {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(values) 
+          }; 
+        fetch(`http://localhost:3000/users`, fetchOptions).then(
+            response => response.json(),
+            err => console.log(err))
+            .then(data => {
+                tbody.innerHTML='';
+                getDatas()
+            });
+            document.querySelector('#editForm').remove()
+        })
 }

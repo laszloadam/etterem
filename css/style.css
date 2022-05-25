@@ -69,14 +69,14 @@ section {
 table {
     counter-reset: rowNumber;
   }
-  tr td {
+  td {
       vertical-align: middle;
   }
-  tr td:first-child {
+  td:first-child, th:first-child {
     text-align: center;
   }
   
-  tr td:first-child::after {
+  td:first-child::after {
     counter-increment: rowNumber;
     content: counter(rowNumber) ".";
   }
